@@ -1,100 +1,53 @@
 package com.h4402.ihm.Controller;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
-
-import com.h4402.ihm.Model.Group;
-import com.h4402.ihm.Model.Restaurant;
-import com.h4402.ihm.Model.User;
-import com.h4402.ihm.View.JoinViewAdapter;
+import com.google.android.gms.maps.GoogleMap;
 import com.h4402.ihm.R;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.h4402.ihm.View.JoinViewFragment;
+import com.h4402.ihm.View.MapViewFragment;
 
 // https://romannurik.github.io/AndroidAssetStudio/icons-generic.html
 
 /**
  *
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity /*implements OnMapReadyCallback*/ {
 
-    private ListView joinViewRestaurantsList;
-    private LinearLayout joinViewGroup;
-    private List<Restaurant> restaurants;
+    private static final int NUM_ITEMS = 2;
+    MyAdapter mAdapter;
+    ViewPager mPager;
+
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.join_view);
+        setContentView(R.layout.fragment_pager);
 
-        // Creating people manually
-        User user1 = new User("Luke Skywalker", R.drawable.av6);
-        User user2 = new User("Kylo Ren", R.drawable.av4);
-        User user3 = new User("Finn", R.drawable.av7);
-        User user4 = new User("Dark Vador", R.drawable.av5);
-        User user5 = new User("Obi-Wan Kenobi", R.drawable.av8);
-        User user6 = new User("Stormtrooper", R.drawable.av9);
-
-        // Creating groups manually
-        ArrayList<User> listUsersGroup1 = new ArrayList<User>();
-        listUsersGroup1.add(user3);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        listUsersGroup1.add(user6);
-        Group group1 = new Group("Troopers", listUsersGroup1, "12h15");
-
-        ArrayList<User> listUsersGroup2 = new ArrayList<User>();
-        listUsersGroup2.add(user1);
-        listUsersGroup2.add(user5);
-        Group group2 = new Group("Chevalier Jedi", listUsersGroup2, "11h45");
-
-        ArrayList<User> listUsersGroup3 = new ArrayList<User>();
-        listUsersGroup3.add(user2);
-        listUsersGroup3.add(user4);
-        Group group3 = new Group("Chevaliers Sith", listUsersGroup3, "12h00");
-
-        // Creating restaurants
-        Restaurant resto1 = new Restaurant("Cantina de Mos-Esley");
-        resto1.addGroup(group2);
-
-        Restaurant resto2 = new Restaurant("Self de l'empire");
-        resto2.addGroup(group3);
-        resto2.addGroup(group1);
-
-        Restaurant resto3 = new Restaurant("Cabine du Faucon Millenium");
-        resto3.addGroup(group2);
-        resto3.addGroup(group3);
-
-        restaurants = new ArrayList<Restaurant>();
-        restaurants.add(resto1);
-        restaurants.add(resto2);
-        restaurants.add(resto3);
-
-        // Linking the ListView to its adapter
-        joinViewRestaurantsList = (ListView) findViewById(R.id.join_view_restaurants_list);
-
-        JoinViewAdapter joinViewRestaurantsListAdapter = new JoinViewAdapter(this, restaurants);
-        joinViewRestaurantsList.setAdapter(joinViewRestaurantsListAdapter);
-
-        //join_view_group = (LinearLayout) findViewById(R.id.group_container);
+        // Instantiate a ViewPager and a PagerAdapter.
+        mAdapter = new MyAdapter(getSupportFragmentManager());
+        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager.setAdapter(mAdapter);
     }
 
-    @Override
+    /*@Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }*/
+
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -114,5 +67,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }*/
+
+    public static class MyAdapter extends FragmentPagerAdapter {
+        public MyAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            if(position == 0){
+                return new JoinViewFragment();
+            } else {
+                return new MapViewFragment();
+            }
+        }
     }
 }

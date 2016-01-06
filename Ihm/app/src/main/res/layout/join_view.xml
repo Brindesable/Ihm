@@ -9,15 +9,14 @@
     android:baselineAligned="false"
     android:id="@+id/join_view">
 
-
-    <SearchView
+    <!--<SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/search_view"
         android:background="#ffffff"
         android:iconifiedByDefault="false"
         android:layout_marginBottom="10dp"
-        android:theme="@style/Base.Theme.AppCompat.Light" />
+        android:theme="@style/Base.Theme.AppCompat.Light" />-->
 
     <ListView
         android:layout_width="match_parent"
@@ -26,7 +25,8 @@
         android:dividerHeight="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:id="@+id/join_view_restaurants_list">
+        android:id="@android:id/list">
     </ListView>
+    <!-- android:id="@+id/join_view_restaurants_list"> -->
 
 </LinearLayout>

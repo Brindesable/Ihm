@@ -22,7 +22,6 @@
         android:orientation="horizontal"
         android:layout_below="@id/group_name"
         android:id="@+id/avatar_bar">
-
     </LinearLayout>
 
     <TextView
