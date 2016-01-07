@@ -31,6 +31,8 @@ public class MainActivity extends FragmentActivity /*implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_pager);
 
+        Controller.initModel();
+
         // Instantiate a ViewPager and a PagerAdapter.
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mPager = (ViewPager)findViewById(R.id.pager);
@@ -84,6 +86,7 @@ public class MainActivity extends FragmentActivity /*implements OnMapReadyCallba
             if(position == 0){
                 return new JoinViewFragment();
             } else {
+                //return new RecapViewFragment();
                 return new MapViewFragment();
             }
         }

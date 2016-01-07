@@ -18,15 +18,31 @@
         android:layout_marginBottom="10dp"
         android:theme="@style/Base.Theme.AppCompat.Light" />-->
 
-    <ListView
+    <!--<ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="#e6e6e6"
-        android:dividerHeight="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:dividerHeight="@dimen/activity_horizontal_margin"
         android:id="@android:id/list">
-    </ListView>
+    </ListView>-->
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listRestaurants"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin">
+        </LinearLayout>
+
+    </ScrollView>
+
     <!-- android:id="@+id/join_view_restaurants_list"> -->
 
 </LinearLayout>

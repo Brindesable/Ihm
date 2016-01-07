@@ -24,7 +24,7 @@ public class MapViewFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.test, container, false);
+        View view = inflater.inflate(R.layout.join_group_hour_view, container, false);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         // SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

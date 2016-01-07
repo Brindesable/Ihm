@@ -11,8 +11,12 @@ import java.util.List;
 public class Group {
 
     private List<User> users;
+    private Restaurant resto = null;
     private String name;
     private String hour;
+    private int id;
+
+    private static int nextId = 0;
 
     /**
      * Constructor
@@ -20,10 +24,15 @@ public class Group {
      * @param g List of Users inside this group
      * @param h Hour they want to eat
      */
-    public Group(String n, List<User> g, String h){
+    public Group(int i, String n, List<User> g, String h){
+        id = i;
         name = n;
         users = g;
         hour = h;
+    }
+
+    public static Group factory(String name, List<User> users, String hour){
+        return new Group(nextId++, name, users, hour);
     }
 
     /**
@@ -63,4 +72,10 @@ public class Group {
      * @return hour of the meeting
      */
     public String getHour() { return hour; }
+
+    public int getId(){ return id; }
+
+    public Restaurant getRestaurant(){ return resto; }
+
+    public void setRestaurant(Restaurant r){ resto = r; }
 }
