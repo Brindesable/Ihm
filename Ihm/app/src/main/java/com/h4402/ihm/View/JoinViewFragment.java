@@ -1,10 +1,13 @@
 package com.h4402.ihm.View;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -12,7 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.h4402.ihm.Controller.AddGroupActivity;
 import com.h4402.ihm.Controller.Controller;
+import com.h4402.ihm.Controller.JoinGroupHourActivity;
 import com.h4402.ihm.Model.Group;
 import com.h4402.ihm.Model.Restaurant;
 import com.h4402.ihm.Model.User;
@@ -37,9 +42,19 @@ public class JoinViewFragment extends Fragment {
         JoinViewRestaurantsList viewRestos = new JoinViewRestaurantsList(getContext(), joinViewRestaurantsList);
         viewRestos.setRestaurants(Controller.restaurants);
 
-        CardView cv = (CardView) inflater.inflate(R.layout.join_view_add_group, container, false);
-        joinViewRestaurantsList.addView(cv);
-        ((ImageButton)  cv.findViewById(R.id.add_button)).setColorFilter(Color.GRAY);
+        RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.join_view_add_group, container, false);
+        joinViewRestaurantsList.addView(rl);
+        ImageButton ib = (ImageButton)  rl.findViewById(R.id.add_button);
+        ib.setColorFilter(Color.GRAY);
+        ib.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, AddGroupActivity.class);
+                context.startActivity(intent);
+                return false;
+            }
+        });
 
         return view;
     }

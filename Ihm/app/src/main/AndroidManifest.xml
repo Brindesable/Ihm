@@ -22,6 +22,26 @@
             android:label="JoinGroupHour"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".Controller.AddGroupActivity"
+            android:label="AddGroup"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Controller.RecapActivity"
+            android:label="Recap"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Controller.SplashScreenActivity"
+            android:label="SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Controller.InscriptionActivity"
+            android:label="Inscription"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

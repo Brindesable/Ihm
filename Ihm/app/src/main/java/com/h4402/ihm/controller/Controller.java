@@ -1,5 +1,12 @@
 package com.h4402.ihm.Controller;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.widget.RemoteViews;
+
 import com.h4402.ihm.Model.Group;
 import com.h4402.ihm.Model.Restaurant;
 import com.h4402.ihm.Model.User;
@@ -113,5 +120,41 @@ public final class Controller {
             else
                 gjv.quit();
         }
+    }
+
+    public static void sendNotif(Context context){
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(context)
+                        .setSmallIcon(R.drawable.av1)
+                        .setContentTitle("My notification")
+                        .setContentText("Hello World!");
+
+        RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.notification);
+        //contentView.setImageViewResource(R.id.image, R.drawable.ic_launcher);
+        contentView.setTextViewText(R.id.resto, Controller.currentGroupSelected.getGroup().getRestaurant().getName());
+        contentView.setTextViewText(R.id.group, Controller.currentGroupSelected.getGroup().getName());
+
+        mBuilder.setContent(contentView);
+
+        Intent resultIntent = new Intent(context, RecapActivity.class);
+
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        context,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        // Sets an ID for the notification
+        int mNotificationId = 1;
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr =
+                (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+        // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 }

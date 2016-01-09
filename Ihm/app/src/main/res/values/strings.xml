@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Ihm</string>
     <string name="action_settings">Settings</string>
+    <string-array name="restaurant_array">
+        <item>Cantina de Mos-Esley</item>
+        <item>Self de l\'empire</item>
+        <item>Cabine du Faucon Millenium</item>
+    </string-array>
 </resources>
