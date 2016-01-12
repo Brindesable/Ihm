@@ -2,8 +2,13 @@
     <string name="app_name">Ihm</string>
     <string name="action_settings">Settings</string>
     <string-array name="restaurant_array">
-        <item>Cantina de Mos-Esley</item>
-        <item>Self de l\'empire</item>
-        <item>Cabine du Faucon Millenium</item>
+        <item>Castor et Pollux</item>
+        <item>Ninkasi la Doua</item>
+        <item>Prévert</item>
+        <item>L\'Olivier</item>
+        <item>Le Grillon</item>
+        <item>Resto U</item>
+        <item>Kebab du coin</item>
+        <item>Tacos du coin</item>
     </string-array>
 </resources>

@@ -3,6 +3,8 @@ package com.h4402.ihm.View;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -17,6 +19,7 @@ import android.widget.RelativeLayout;
 
 import com.h4402.ihm.Controller.AddGroupActivity;
 import com.h4402.ihm.Controller.Controller;
+import com.h4402.ihm.Controller.InscriptionActivity;
 import com.h4402.ihm.Controller.JoinGroupHourActivity;
 import com.h4402.ihm.Model.Group;
 import com.h4402.ihm.Model.Restaurant;
@@ -44,15 +47,23 @@ public class JoinViewFragment extends Fragment {
 
         RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.join_view_add_group, container, false);
         joinViewRestaurantsList.addView(rl);
-        ImageButton ib = (ImageButton)  rl.findViewById(R.id.add_button);
+        final ImageButton ib = (ImageButton)  rl.findViewById(R.id.add_button);
         ib.setColorFilter(Color.GRAY);
-        ib.setOnTouchListener(new View.OnTouchListener() {
+        ib.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, AddGroupActivity.class);
                 context.startActivity(intent);
-                return false;
+                ib.setColorFilter(Color.parseColor("#2196f3"));
+                ib.setBackgroundResource(R.drawable.roundcorner_blue);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ib.setColorFilter(Color.GRAY);
+                        ib.setBackgroundResource(R.drawable.roundcorner_white);
+                    }
+                }, 500);
             }
         });
 

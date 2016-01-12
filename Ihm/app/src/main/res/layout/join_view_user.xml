@@ -6,4 +6,5 @@
     android:layout_height="64dp"
     app:civ_border_width="2dp"
     app:civ_border_color="#BBB"
-    android:layout_marginRight="8dp"/>
+    android:layout_marginRight="8dp"
+    android:padding="8dp"/>

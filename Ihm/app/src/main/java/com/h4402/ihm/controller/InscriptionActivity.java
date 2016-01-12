@@ -31,7 +31,5 @@ public class InscriptionActivity extends Activity {
         inscriptionButton.setOnTouchListener(listenerQuit);
         ImageView fbButton = (ImageView) findViewById(R.id.facebook_button);
         fbButton.setOnTouchListener(listenerQuit);
-        ImageView googleButton = (ImageView) findViewById(R.id.google_button);
-        googleButton.setOnTouchListener(listenerQuit);
     }
 }

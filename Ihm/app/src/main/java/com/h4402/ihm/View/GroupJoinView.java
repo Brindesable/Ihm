@@ -1,7 +1,9 @@
 package com.h4402.ihm.View;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -27,12 +29,14 @@ public class GroupJoinView {
 
     public void join(){
         ImageButton joinButton = (ImageButton) view.findViewById(R.id.join_button);
-        joinButton.setColorFilter(Color.RED);
+        joinButton.setColorFilter(Color.parseColor("#4caf50"));
+        joinButton.setBackgroundResource(R.drawable.roundcorner_green);
     }
 
     public void quit(){
         ImageButton joinButton = (ImageButton) view.findViewById(R.id.join_button);
         joinButton.setColorFilter(Color.GRAY);
+        joinButton.setBackgroundResource(R.drawable.roundcorner_white);
     }
 
     public Group getGroup(){ return group; }

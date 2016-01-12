@@ -1,7 +1,12 @@
 package com.h4402.ihm.View;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Handler;
+import android.support.v4.app.DialogFragment;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -11,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.h4402.ihm.Controller.MainActivity;
 import com.h4402.ihm.Model.User;
 import com.h4402.ihm.R;
 
@@ -41,7 +47,7 @@ public class JoinViewUsersList {
      * Change the view viewUsers according to the users list given in parameter
      * @param users Users inside the group
      */
-    public void setUsers(List<User> users){
+    public void setUsers(final List<User> users){
         viewUsers.removeAllViews();
 
         // We get the screen metrics in order to know how many avatar we can display
@@ -62,9 +68,27 @@ public class JoinViewUsersList {
         // If there still some avatars undisplayed
         if(users.size() > nbUsersMax){
             // We get the XML for a white button
-            Button others = (Button) LayoutInflater.from(context).inflate(R.layout.join_view_white_button, (ViewGroup) viewUsers, false);
+            final Button others = (Button) LayoutInflater.from(context).inflate(R.layout.join_view_white_button, (ViewGroup) viewUsers, false);
             // And we write how many avatars have not been displayed
             others.setText("+" + (users.size() - nbUsersMax));
+
+            others.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogFragment othersFragment = new OthersMembersFragment(users);
+                    othersFragment.show(MainActivity.fragmentManager, "others");
+                    others.setTextColor(Color.parseColor("#2196f3"));
+                    others.setBackgroundResource(R.drawable.roundcorner_blue);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                        others.setTextColor(Color.GRAY);
+                        others.setBackgroundResource(R.drawable.roundcorner_white);
+                        }
+                    }, 500);
+                }
+            });
+
             viewUsers.addView(others);
         }
     }

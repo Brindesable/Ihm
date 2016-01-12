@@ -39,7 +39,7 @@
         android:id="@+id/join_button"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:background="@drawable/roundcorner"
+        android:background="@drawable/roundcorner_white"
         android:layout_alignParentRight="true"
         android:layout_below="@id/horaire"
         android:src="@drawable/check"

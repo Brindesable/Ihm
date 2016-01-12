@@ -11,14 +11,18 @@ import java.util.List;
 public class Restaurant {
     private List<Group> groups;
     private String name;
+    double latitude;
+    double longitude;
 
     /**
      * Constructor
      * @param n name of the restaurant
      */
-    public Restaurant(String n){
+    public Restaurant(String n, Double lat, Double lon){
         name = n;
         groups = new ArrayList<Group>();
+        latitude = lat;
+        longitude = lon;
     }
 
     /**
@@ -62,4 +66,8 @@ public class Restaurant {
     public String getName(){
         return name;
     }
+
+    public Double getLat() { return latitude; }
+
+    public Double getLon() { return longitude; }
 }

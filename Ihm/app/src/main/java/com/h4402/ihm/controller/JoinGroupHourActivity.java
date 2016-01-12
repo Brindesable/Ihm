@@ -64,7 +64,9 @@ public class JoinGroupHourActivity extends Activity {
         ib.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                ib.setColorFilter(Color.RED);
+                // On touch colors
+                ib.setColorFilter(Color.parseColor("#4caf50"));
+                ib.setBackgroundResource(R.drawable.roundcorner_green);
                 JoinGroupHourActivity.activity.finish();
                 return false;
             }

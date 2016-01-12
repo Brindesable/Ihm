@@ -1,5 +1,6 @@
 package com.h4402.ihm.Controller;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -32,18 +33,19 @@ import java.util.ResourceBundle;
 /**
  *
  */
-public class MainActivity extends FragmentActivity /*implements OnMapReadyCallback*/ {
+public class MainActivity extends FragmentActivity {
 
     private static final int NUM_ITEMS = 3;
     MyAdapter mAdapter;
-    ViewPager mPager;
-
-    private GoogleMap mMap;
+    static public ViewPager mPager;
+    public static FragmentManager fragmentManager;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        activity = this;
 
         // Launch splashscreen
         Intent intent = new Intent(this, SplashScreenActivity.class);
@@ -51,6 +53,8 @@ public class MainActivity extends FragmentActivity /*implements OnMapReadyCallba
 
         setContentView(R.layout.fragment_pager);
         Controller.initModel();
+
+        fragmentManager = getSupportFragmentManager();
 
         // Instantiate a ViewPager and a PagerAdapter.
         mAdapter = new MyAdapter(getSupportFragmentManager());
@@ -74,39 +78,6 @@ public class MainActivity extends FragmentActivity /*implements OnMapReadyCallba
 
         return true;
     }
-
-
-    /*@Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }*/
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 
     public static class MyAdapter extends FragmentPagerAdapter {
         public MyAdapter(FragmentManager fm) {

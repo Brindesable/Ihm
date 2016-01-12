@@ -2,6 +2,7 @@ package com.h4402.ihm.View;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +38,10 @@ public class JoinViewGroupsList {
     }
 
     public void setGroups(List<Group> groups){
-        viewGroups.removeAllViews();
         for(Group g : groups)
         {
             // We get the XML view for one group (and inflate it)
-            RelativeLayout viewGroup = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.join_view_group, (ViewGroup) viewGroups, false);
+            RelativeLayout viewGroup = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.join_view_group, viewGroups, false);
             // We set the TextViews displaying the group name and the hour
             TextView groupName = (TextView) viewGroup.findViewById(R.id.group_name);
             groupName.setText(g.getName());

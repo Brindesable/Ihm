@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:text="12h00 - 13h30"
+                android:text="11h00 - 14h00"
                 android:id="@+id/hour"
                 android:layout_below="@+id/group_name"
                 android:textColor="#393939"
@@ -58,7 +58,7 @@
                 android:id="@+id/join_button"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/roundcorner"
+                android:background="@drawable/roundcorner_white"
                 android:src="@drawable/check"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />

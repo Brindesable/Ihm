@@ -26,6 +26,7 @@ public class SplashScreenActivity extends Activity {
             public void run() {
                 // Inscription
                 Intent intent = new Intent(SplashScreenActivity.activity, InscriptionActivity.class);
+                //Intent intent = new Intent(SplashScreenActivity.activity, TestMapActivity.class);
                 startActivity(intent);
                 finish();
             }
